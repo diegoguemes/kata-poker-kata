@@ -27,6 +27,9 @@ class PokerHandTranslatorTest(unittest.TestCase):
     def test_translates_flush_hand(self):
         self.assertEqual(FLUSH, self.translate(['A♠', 'J♠', '10♠', '6♠', '3♠']))
 
+    def test_translates_full_house_hand(self):
+        self.assertEqual(FULL_HOUSE, self.translate(['5♠', '5♥', '5♦', '8♠', '8♥']))
+
     def translate(self, hand):
         return self.poker_hand_translator.translate(PokerHand(hand))
 
