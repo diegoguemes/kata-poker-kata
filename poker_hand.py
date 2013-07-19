@@ -5,6 +5,9 @@ class PokerHand:
     def distinct_values_count(self):
         return len(set(self.values()))
 
+    def distinct_suits_count(self):
+        return len(set(self.suits()))
+
     def max_repeated_value_count(self):
         max_count = 0
         values = self.values()
@@ -16,6 +19,9 @@ class PokerHand:
 
     def values(self):
         return [self.__value_of(card) for card in self.__cards]
+
+    def suits(self):
+        return [card[-1:] for card in self.__cards]
 
     def __value_of(self, card):
         value = card[:-1]
