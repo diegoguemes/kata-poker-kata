@@ -1,13 +1,13 @@
 import unittest
 from poker_hands import *
 from poker_hand import PokerHand
-from poker_hand_translator import PokerHandTranslator
+import poker_hand_translator
 
 
 class PokerHandTranslatorTest(unittest.TestCase):
 
     def setUp(self):
-        self.poker_hand_translator = PokerHandTranslator()
+        self.translator = poker_hand_translator.create_poker_hand_translator()
 
     def test_translates_high_card_hand(self):
         self.assertEqual(HIGH_CARD, self.translate(['A♥', 'K♥', 'Q♣', '10♥', '2♠']))
@@ -40,7 +40,7 @@ class PokerHandTranslatorTest(unittest.TestCase):
         self.assertEqual(ROYAL_FLUSH, self.translate(['A♣', 'K♣', 'Q♣', 'J♣', '10♣']))
 
     def translate(self, hand):
-        return self.poker_hand_translator.translate(PokerHand(hand))
+        return self.translator.translate(PokerHand(hand))
 
 
 if __name__ == '__main__':
