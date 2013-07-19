@@ -1,6 +1,8 @@
 import unittest
 from poker_hands import *
+from poker_hand import PokerHand
 from poker_hand_translator import PokerHandTranslator
+
 
 class PokerHandTranslatorTest(unittest.TestCase):
 
@@ -23,7 +25,7 @@ class PokerHandTranslatorTest(unittest.TestCase):
         self.assertEqual(STRAIGHT, self.translate(['9♣', '8♦', '7♠', '6♥', '5♣']))
 
     def translate(self, hand):
-        return self.poker_hand_translator.translate(hand)
+        return self.poker_hand_translator.translate(PokerHand(hand))
 
 
 if __name__ == '__main__':
