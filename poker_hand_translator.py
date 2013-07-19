@@ -25,8 +25,23 @@ class PokerHandTranslator:
         return self.__max_repeated_value_count(hand) == 3
 
     def __is_straight(self, hand):
-        values = [self.__value_of(card) for card in hand]
+        values = self.__values_of(hand)
         return sorted(values) == list(range(min(values), max(values) + 1))
+
+    def __distinct_values_count(self, hand):
+        return len(set(self.__values_of(hand)))
+
+    def __max_repeated_value_count(self, hand):
+        max_count = 0
+        values = self.__values_of(hand)
+        for value in set(values):
+            count = values.count(value)
+            if count > max_count:
+                max_count = count
+        return max_count
+
+    def __values_of(self, hand):
+        return [self.__value_of(card) for card in hand]
 
     def __value_of(self, card):
         value = card[:-1]
@@ -34,16 +49,3 @@ class PokerHandTranslator:
         if value.isdigit():
             return int(value)
         return court_carts[value]
-
-    def __distinct_values_count(self, hand):
-        values = [card[:-1] for card in hand]
-        return len(set(values))
-
-    def __max_repeated_value_count(self, hand):
-        max_count = 0
-        values = [card[:-1] for card in hand]
-        for value in set(values):
-            count = values.count(value)
-            if count > max_count:
-                max_count = count
-        return max_count
