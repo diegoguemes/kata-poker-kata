@@ -3,6 +3,7 @@ from poker_hands import *
 class PokerHandTranslator:
     def __init__(self):
         self.hand_rules = sorted({
+            STRAIGHT: self.__is_straight,
             THREE_OF_A_KIND: self.__is_three_of_a_kind,
             TWO_PAIR: self.__is_two_pair,
             PAIR: self.__is_pair
@@ -20,12 +21,23 @@ class PokerHandTranslator:
     def __is_two_pair(self, hand):
         return self.__distinct_values_count(hand) == len(hand) - 2
 
+    def __is_three_of_a_kind(self, hand):
+        return self.__max_repeated_value_count(hand) == 3
+
+    def __is_straight(self, hand):
+        values = [self.__value_of(card) for card in hand]
+        return sorted(values) == list(range(min(values), max(values) + 1))
+
+    def __value_of(self, card):
+        value = card[:-1]
+        court_carts = {'J': 11, 'Q': 12, 'K': 13, 'A':14}
+        if value.isdigit():
+            return int(value)
+        return court_carts[value]
+
     def __distinct_values_count(self, hand):
         values = [card[:-1] for card in hand]
         return len(set(values))
-
-    def __is_three_of_a_kind(self, hand):
-        return self.__max_repeated_value_count(hand) == 3
 
     def __max_repeated_value_count(self, hand):
         max_count = 0
