@@ -10,9 +10,11 @@ class PokerHandTranslator:
         return HIGH_CARD
 
     def __is_pair(self, hand):
-        values = [card[:-1] for card in hand]
-        return len(set(values)) == len(hand) - 1
+        return self.__distinct_values_count(hand) == len(hand) - 1
 
     def __is_two_pair(self, hand):
+        return self.__distinct_values_count(hand) == len(hand) - 2
+
+    def __distinct_values_count(self, hand):
         values = [card[:-1] for card in hand]
-        return len(set(values)) == len(hand) - 2
+        return len(set(values))
