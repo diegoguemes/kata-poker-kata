@@ -16,6 +16,9 @@ class PokerHandTranslatorTest(unittest.TestCase):
     def test_translates_two_pair_hand(self):
         self.assertEqual(TWO_PAIR, self.translate(['K♣', 'K♠', '9♥', '9♦', 'J♥']))
 
+    def test_translates_three_of_a_kind_hand(self):
+        self.assertEqual(THREE_OF_A_KIND, self.translate(['3♣', '3♠', '3♥', 'Q♦', '2♥']))
+
     def translate(self, hand):
         return self.poker_hand_translator.translate(hand)
 
