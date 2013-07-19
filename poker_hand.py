@@ -18,13 +18,15 @@ class PokerHand:
         return max_count
 
     def values(self):
-        return [self.__value_of(card) for card in self.__cards]
+        return [self.__value_of(card[:-1]) for card in self.__cards]
 
     def suits(self):
         return [card[-1:] for card in self.__cards]
 
-    def __value_of(self, card):
-        value = card[:-1]
+    def contains_value(self, value):
+        return self.__value_of(value) in self.values()
+
+    def __value_of(self, value):
         court_carts = {'J': 11, 'Q': 12, 'K': 13, 'A':14}
         if value.isdigit():
             return int(value)

@@ -3,6 +3,7 @@ from poker_hands import *
 class PokerHandTranslator:
     def __init__(self):
         self.hand_rules = sorted({
+            ROYAL_FLUSH: self.__is_royal_flush,
             STRAIGHT_FLUSH: self.__is_straight_flush,
             FOUR_OF_A_KIND: self.__is_four_of_a_kind,
             FULL_HOUSE: self.__is_full_house,
@@ -43,3 +44,6 @@ class PokerHandTranslator:
 
     def __is_straight_flush(self, hand):
         return self.__is_straight(hand) and self.__is_flush(hand)
+
+    def __is_royal_flush(self, hand):
+        return self.__is_straight_flush(hand) and hand.contains_value('A')
