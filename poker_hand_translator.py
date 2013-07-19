@@ -3,6 +3,7 @@ from poker_hands import *
 class PokerHandTranslator:
     def __init__(self):
         self.hand_rules = sorted({
+            STRAIGHT_FLUSH: self.__is_straight_flush,
             FOUR_OF_A_KIND: self.__is_four_of_a_kind,
             FULL_HOUSE: self.__is_full_house,
             FLUSH: self.__is_flush,
@@ -39,3 +40,6 @@ class PokerHandTranslator:
 
     def __is_four_of_a_kind(self, hand):
         return hand.max_repeated_value_count() == 4
+
+    def __is_straight_flush(self, hand):
+        return self.__is_straight(hand) and self.__is_flush(hand)
