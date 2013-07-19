@@ -33,7 +33,7 @@ class FourOfAKindRule:
 
 class StraightFlushRule:
     def is_satisfied_by(self, hand):
-        return StraightRule().is_satisfied_by(hand) and FlushRule.is_satisfied_by(hand)
+        return StraightRule().is_satisfied_by(hand) and FlushRule().is_satisfied_by(hand)
 
 class RoyalFlushRule:
     def is_satisfied_by(self, hand):
