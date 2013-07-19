@@ -33,6 +33,9 @@ class PokerHandTranslatorTest(unittest.TestCase):
     def test_translates_four_of_a_kind_hand(self):
         self.assertEqual(FOUR_OF_A_KIND, self.translate(['5♠', '5♥', '5♦', '5♣', '8♥']))
 
+    def test_translates_straight_flush_hand(self):
+        self.assertEqual(STRAIGHT_FLUSH, self.translate(['J♣', '10♣', '9♣', '8♣', '7♣']))
+
     def translate(self, hand):
         return self.poker_hand_translator.translate(PokerHand(hand))
 
