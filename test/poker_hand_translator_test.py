@@ -3,7 +3,6 @@ from poker_hands import *
 from poker_hand import PokerHand
 import poker_hand_translator
 
-
 class PokerHandTranslatorTest(unittest.TestCase):
 
     def setUp(self):
