@@ -1,6 +1,7 @@
 class PokerHand:
+
     def __init__(self, cards):
-        self.__cards = cards
+        self.cards = cards
 
     def distinct_values_count(self):
         return len(set(self.values()))
@@ -18,15 +19,15 @@ class PokerHand:
         return max_count
 
     def values(self):
-        return [self.__value_of(card[:-1]) for card in self.__cards]
+        return [self.value_of(card[:-1]) for card in self.cards]
 
     def suits(self):
-        return [card[-1:] for card in self.__cards]
+        return [card[-1:] for card in self.cards]
 
     def contains_value(self, value):
-        return self.__value_of(value) in self.values()
+        return self.value_of(value) in self.values()
 
-    def __value_of(self, value):
+    def value_of(self, value):
         court_carts = {'J': 11, 'Q': 12, 'K': 13, 'A':14}
         if value.isdigit():
             return int(value)

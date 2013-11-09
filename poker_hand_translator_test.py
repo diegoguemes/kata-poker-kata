@@ -41,6 +41,5 @@ class PokerHandTranslatorTest(unittest.TestCase):
     def translate(self, hand):
         return self.translator.translate(PokerHand(hand))
 
-
 if __name__ == '__main__':
     unittest.main()
